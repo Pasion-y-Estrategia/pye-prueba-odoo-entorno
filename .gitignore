@@ -1,0 +1,5 @@
+odoo-src/
+addons/*
+!addons/.gitkeep
+__pycache__/
+*.pyc
