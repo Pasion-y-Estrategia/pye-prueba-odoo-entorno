@@ -1,0 +1,33 @@
+# Entorno de la prueba técnica de PyE: Odoo 19 Community + PostgreSQL 16.
+# Todos los candidatos usan el mismo build de Odoo (tag con fecha).
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  odoo:
+    image: odoo:${ODOO_TAG:-19.0-20261102}
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    environment:
+      HOST: db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - ./addons:/mnt/extra-addons
+      - ./config/odoo.conf:/etc/odoo/odoo.conf:ro
+      - odoo-data:/var/lib/odoo
+    command: ["odoo", "--dev=all"]
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  odoo-data:
