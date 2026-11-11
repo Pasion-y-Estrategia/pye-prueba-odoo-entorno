@@ -3,9 +3,6 @@
 Este repo levanta en tu laptop un Odoo 19 Community con PostgreSQL usando Docker.
 Es opcional: si ya tienes tu propia forma de montar Odoo 19, puedes usarla en la prueba.
 
-La primera vez descarga las imágenes y crea la base, lo que tarda varios minutos.
-Si puedes, levántalo antes de la prueba para no gastar ese tiempo.
-
 ## Requisitos
 
 - Docker Desktop (Windows o macOS) o Docker Engine con el plugin `compose` (Linux).
